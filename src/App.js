@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import Footer from "./component/Footer/Footer";
+import Home from "./pages/Home";
+import Header from "./component/Header/Header";
+import OrderNow from "./component/OrderNow/OrderNow";
+import OrderPlaced from "./component/OrderPlaced/OrderPlaced";
+import DashBoard from "./component/DashBoard/DashBoard";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="dashboard" element={<DashBoard />} />
+          <Route path="ordernow" element={<OrderNow />} />
+          <Route path="orderplaced" element={<OrderPlaced />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }
