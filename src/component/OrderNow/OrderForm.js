@@ -1,6 +1,7 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
 const OrderForm = () => {
   return (
@@ -34,6 +35,7 @@ const OrderForm = () => {
           label="City"
           variant="outlined"
         />
+        <Link to='/orderplaced'>
         <Button
           sx={{
             backgroundColor: "#cd2f17",
@@ -44,6 +46,7 @@ const OrderForm = () => {
         >
           Order Now
         </Button>
+        </Link>
         <Button
           sx={{ backgroundColor: "white", color: "black", marginTop: "2rem" }}
           variant="contained"

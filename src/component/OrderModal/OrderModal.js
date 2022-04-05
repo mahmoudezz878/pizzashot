@@ -6,6 +6,7 @@ import motoicon from "../Header/motoicon.png";
 import CardInfo from "./ModalCard";
 import Stack from "@mui/material/Stack";
 import Badge from "@mui/material/Badge";
+import { Link } from "react-router-dom";
 
 const style = {
   transform: "translate(0%, 20%)",
@@ -50,22 +51,13 @@ const OrderModal = () => {
           <CardInfo />
           <CardInfo />
           <CardInfo />
-          <CardInfo />
-          <CardInfo />
-          <CardInfo />
-          <CardInfo />
-          <CardInfo />
-          <CardInfo />
-          <CardInfo />
-          <CardInfo />
-          <CardInfo />
-          <CardInfo />
-          <CardInfo />
           <div className="order">
             <span className="subtotal">Subtotal: LE 1700.00</span>
-            <Button sx={{ backgroundColor: "#FF9200" }} variant="contained">
-              CHECKOUT
-            </Button>
+            <Link to="/ordernow">
+              <Button onClick={handleClose} sx={{ backgroundColor: "#FF9200", width:"100%" }} variant="contained">
+                CHECKOUT
+              </Button>
+            </Link>
           </div>
         </Box>
       </Modal>

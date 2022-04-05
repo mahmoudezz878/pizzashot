@@ -3,14 +3,15 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+import CheckInput from "../../pages/DashBoard/CheckInput/CheckInput";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
-export default function PermanentDrawerLeft() {
+const PendingOrders = () => {
   return (
     <div className="dashboard">
       <Box sx={{ display: "flex" }}>
@@ -29,11 +30,16 @@ export default function PermanentDrawerLeft() {
           <Toolbar />
           <Divider />
           <List>
-            {["Pending Orders", "Compleated Orders"].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemText primary={text} />
+            <Link to="/pendingorders">
+              <ListItem button>
+                <ListItemText primary={"Pending Orders"} />
               </ListItem>
-            ))}
+            </Link>
+            <Link to="/compleatedorders">
+              <ListItem button>
+                <ListItemText primary={"Compleated Orders"} />
+              </ListItem>
+            </Link>
           </List>
         </Drawer>
         <Box
@@ -41,9 +47,16 @@ export default function PermanentDrawerLeft() {
           sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
         >
           <Toolbar />
-          <Typography paragraph>test</Typography>
+          <div className="check">
+            <CheckInput />
+            <CheckInput />
+            <CheckInput />
+            <CheckInput />
+          </div>
         </Box>
       </Box>
     </div>
   );
-}
+};
+
+export default PendingOrders;

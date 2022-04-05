@@ -353,3 +353,34 @@ body {
 .dashboard {
   height: 82vh;
 }
+
+/* checkInput */
+
+.check {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.check > .checkInput {
+  flex: 1 1 30%;
+}
+
+.checkInput {
+  border: 1px solid black;
+  margin: 10px;
+}
+
+.black {
+  height: 30px;
+  background-color: black;
+  color: white;
+  text-align-last: end;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  width: 100%;
+}

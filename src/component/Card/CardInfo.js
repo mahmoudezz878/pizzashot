@@ -1,5 +1,4 @@
 import React from "react";
-import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -10,8 +9,7 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import piza from "./piza.png";
 
-const CardInfo = () => {
-  const theme = useTheme();
+const CardInfo = ({product}) => {
   return (
     <div className="card">
       <Card sx={{ display: "flex", margin: "10px" }}>
@@ -24,7 +22,7 @@ const CardInfo = () => {
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           <CardContent sx={{ flex: "1 0 auto" }}>
             <Typography component="div" variant="h5">
-              Seafood
+              {product?.name}
             </Typography>
             <Typography
               variant="subtitle1"
@@ -38,10 +36,10 @@ const CardInfo = () => {
               color="text.secondary"
               component="div"
             >
-              Pineapple, squid
+            {product?.category}
             </Typography>
             <Typography component="div" variant="p">
-              Price: LE 120.00
+              Price: LE {product?.price}
             </Typography>
           </CardContent>
           <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
