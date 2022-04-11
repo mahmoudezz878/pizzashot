@@ -1,16 +1,18 @@
-import React from "react";
+import { useEffect } from "react";
 import CardInfo from "./CardInfo";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getProducts } from "../../redux/actions/actions";
 
 const Card = ({ filter }) => {
   const products = useSelector((state) => state.Counter);
-  const foodList = useSelector((state) => state.foodList);
+  // const foodList = useSelector((state) => state.foodList);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getProducts());
-  // }, []);
+  useEffect(() => {
+    dispatch(getProducts());
+  }, []);
+
 
   function filterProducts(foodList) {
     switch (filter) {

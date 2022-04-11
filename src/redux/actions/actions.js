@@ -44,9 +44,9 @@ export const getProducts = () => async (dispatch) => {
   try {
     const response = await api.getProducts();
 
-    console.log({ response });
+    console.log( response.data );
 
-    dispatch({ type: "FETCH_ALL", payload: response.data.data });
+    dispatch({ type: "FETCH_ALL", payload: response.data });
   } catch (err) {
     console.log(err);
   }

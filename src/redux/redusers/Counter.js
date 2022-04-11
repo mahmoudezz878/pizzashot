@@ -1,8 +1,13 @@
 import data from "../../Data.json";
-const initialState = data;
+const initialState = [];
 
 const Counter = (state = initialState, action) => {
   switch (action.type) {
+    case "FETCH_ALL":
+      console.log('insideReducer', action.payload)
+      return action.payload.map( (item) => {
+        return {...item, qty: 0}
+      } );
     case "INCREMENT":
       const incrementState = state.map((item) => {
         if (item.id === action.payload.id) {
@@ -29,9 +34,7 @@ const Counter = (state = initialState, action) => {
           return item;
         }
       });
-      return deleteProduct
-      case "FETCH_ALL":
-      return action.payload
+      return deleteProduct;
     default:
       return state;
   }

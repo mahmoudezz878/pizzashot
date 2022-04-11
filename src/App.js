@@ -9,18 +9,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import data from "./Data.json";
 import CompleatedOrders from "./component/CompleatedOrders/CompleatedOrders";
 import PendingOrders from "./component/PendingOrders/PendingOrders";
-import { useDispatch } from "react-redux";
-import { getProducts } from "./redux/actions/actions";
 
 function App() {
   const [products, setProducts] = useState(data);
   const [filter, setFilter] = useState("ALL");
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getProducts());
-  }, []);
 
   return (
     <div className="App">

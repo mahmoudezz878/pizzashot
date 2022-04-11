@@ -46,7 +46,7 @@ const CardInfo = ({ product }) => {
               color="text.secondary"
               component="div"
             >
-              {product?.category}
+              {product?.category?.name}
             </Typography>
             <Typography component="div" variant="p">
               Price: LE {product?.price}
@@ -54,7 +54,7 @@ const CardInfo = ({ product }) => {
           </CardContent>
           <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
             <IconButton
-            disabled={product.qty ? false : true}
+            
               aria-label="previous"
               onClick={() => {dispatch(decrement(product))}}>
               <RemoveIcon />
