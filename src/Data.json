@@ -3,37 +3,43 @@
     "id": 1,
     "name": "Seafood",
     "price": "120.00",
-    "category": "popular"
+    "category": "popular",
+    "qty": 0
   },
   {
     "id": 2,
     "name": "Seafood",
     "price": "120.00",
-    "category": "pizza"
+    "category": "pizza",
+    "qty": 0
   },
   {
     "id": 3,
     "name": "Seafood",
     "price": "120.00",
-    "category": "burger"
+    "category": "burger",
+    "qty": 0
   },
   {
     "id": 4,
     "name": "Seafood",
     "price": "120.00",
-    "category": "crepe"
+    "category": "crepe",
+    "qty": 0
   },
   {
     "id": 5,
     "name": "cola",
     "price": "120.00",
-    "category": "drinks"
+    "category": "drinks",
+    "qty": 0
   },
   {
     "id": 6,
     "name": "Seafood",
     "price": "120.00",
-    "category": "popular"
+    "category": "popular",
+    "qty": 0
   }
   
 ]

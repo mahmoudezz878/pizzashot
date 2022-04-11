@@ -4,9 +4,9 @@ import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import motoicon from "../Header/motoicon.png";
 import CardInfo from "./ModalCard";
-import Stack from "@mui/material/Stack";
 import Badge from "@mui/material/Badge";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const style = {
   transform: "translate(0%, 20%)",
@@ -30,10 +30,33 @@ const OrderModal = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const products = useSelector((state) => state.Counter);
+
+  const newProducts = products.filter((card) => {
+    return card.qty > 0;
+  });
+
+  const total = newProducts.reduce((acc, curr) => {
+    return acc + curr.qty * curr.price;
+  }, 0);
+  console.log(total);
+
+  // const newqty = newProducts?.map((card) => {
+  //   return  card.qty
+  // })
+
+  // const newprice = newProducts?.map((card) => {
+  //   return  card.price
+  // })
+
+  // console.log('newarr', newprice)
+  // console.log('newarr', newqty)
+
   return (
     <div>
       <Button onClick={handleOpen}>
-        <Badge badgeContent={4} color="primary">
+        <Badge badgeContent={newProducts.length} color="primary">
           <img src={motoicon} height="30px" />
         </Badge>
       </Button>
@@ -44,21 +67,27 @@ const OrderModal = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <CardInfo />
-          <CardInfo />
-          <CardInfo />
-          <CardInfo />
-          <CardInfo />
-          <CardInfo />
-          <CardInfo />
-          <div className="order">
-            <span className="subtotal">Subtotal: LE 1700.00</span>
-            <Link to="/ordernow">
-              <Button onClick={handleClose} sx={{ backgroundColor: "#FF9200", width:"100%" }} variant="contained">
-                CHECKOUT
-              </Button>
-            </Link>
-          </div>
+          {newProducts.length ? (
+            <div>
+              {newProducts?.map((card, index) => {
+                return <CardInfo key={index} card={card} />;
+              })}
+              <div className="order">
+                <span className="subtotal">Subtotal: LE {total}</span>
+                <Link to="/ordernow">
+                  <Button
+                    onClick={handleClose}
+                    sx={{ backgroundColor: "#FF9200", width: "100%" }}
+                    variant="contained"
+                  >
+                    CHECKOUT
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          ) : (
+            "no food"
+          )}
         </Box>
       </Modal>
     </div>

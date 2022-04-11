@@ -1,4 +1,3 @@
-import React from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -8,8 +7,19 @@ import Typography from "@mui/material/Typography";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import piza from "./piza.png";
+import { useDispatch, useSelector } from "react-redux";
+import { increment, decrement } from "../../redux/actions/actions";
 
-const CardInfo = ({product}) => {
+const CardInfo = ({ product }) => {
+  // const products = useSelector((state) => state.Counter);
+  const dispatch = useDispatch();
+
+  // const addItem = (product) => {
+  //   dispatch(addCard(product));
+
+  // };
+
+
   return (
     <div className="card">
       <Card sx={{ display: "flex", margin: "10px" }}>
@@ -36,18 +46,22 @@ const CardInfo = ({product}) => {
               color="text.secondary"
               component="div"
             >
-            {product?.category}
+              {product?.category}
             </Typography>
             <Typography component="div" variant="p">
               Price: LE {product?.price}
             </Typography>
           </CardContent>
           <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
-            <IconButton aria-label="previous">
+            <IconButton
+            disabled={product.qty ? false : true}
+              aria-label="previous"
+              onClick={() => {dispatch(decrement(product))}}>
               <RemoveIcon />
             </IconButton>
-            <div className="square">1</div>
-            <IconButton aria-label="next">
+            <div className="square">{product.qty}</div>
+            <IconButton
+              onClick={() => {dispatch(increment(product))}} aria-label="next">
               <AddIcon />
             </IconButton>
           </Box>

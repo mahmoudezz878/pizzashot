@@ -1,23 +1,33 @@
 import React from "react";
 import CardInfo from "./CardInfo";
+import { useSelector } from "react-redux";
 
-const Card = ({ products, filter }) => {
-  function filterProducts(products) {
+const Card = ({ filter }) => {
+  const products = useSelector((state) => state.Counter);
+  const foodList = useSelector((state) => state.foodList);
+
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(getProducts());
+  // }, []);
+
+  function filterProducts(foodList) {
     switch (filter) {
-      case "ALL":
-        return products;
-      case "POPULAR":
-        return products.filter((item) => item.category === "popular");
-      case "PIZZA":
-        return products.filter((item) => item.category === "pizza");
-      case "BURGER":
-        return products.filter((item) => item.category === "burger");
-      case "CREPE":
-        return products.filter((item) => item.category === "crepe");
-      case "DRINKS":
-        return products.filter((item) => item.category === "drinks");
+      case "all":
+        return foodList;
+      case "popular":
+        return foodList.filter((item) => item.category === filter);
+      case "pizza":
+        return foodList.filter((item) => item.category === filter);
+      case "burger":
+        return foodList.filter((item) => item.category === filter);
+      case "crepe":
+        return foodList.filter((item) => item.category === filter);
+      case "drinks":
+        return foodList.filter((item) => item.category === filter);
       default:
-        return products;
+        return foodList;
     }
   }
 
