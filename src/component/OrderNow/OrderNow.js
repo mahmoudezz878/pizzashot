@@ -14,9 +14,6 @@ const OrderNow = () => {
     return acc + curr.qty * curr.price;
   }, 0);
 
-  
-
-
   return (
     <div className="orderNow">
       <div className="orderNowForm">

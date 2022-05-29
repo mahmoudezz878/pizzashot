@@ -5,7 +5,6 @@ import { getProducts } from "../../redux/actions/actions";
 
 const Card = ({ filter }) => {
   const products = useSelector((state) => state.Counter);
-  // const foodList = useSelector((state) => state.foodList);
 
   const dispatch = useDispatch();
 
@@ -13,21 +12,22 @@ const Card = ({ filter }) => {
     dispatch(getProducts());
   }, []);
 
+  console.log({products})
 
   function filterProducts(foodList) {
     switch (filter) {
       case "all":
         return foodList;
       case "popular":
-        return foodList.filter((item) => item.category === filter);
+        return foodList.filter((item) => item.category.name === filter);
       case "pizza":
-        return foodList.filter((item) => item.category === filter);
+        return foodList.filter((item) => item.category.name === filter);
       case "burger":
-        return foodList.filter((item) => item.category === filter);
+        return foodList.filter((item) => item.category.name === filter);
       case "crepe":
-        return foodList.filter((item) => item.category === filter);
+        return foodList.filter((item) => item.category.name === filter);
       case "drinks":
-        return foodList.filter((item) => item.category === filter);
+        return foodList.filter((item) => item.category.name === filter);
       default:
         return foodList;
     }

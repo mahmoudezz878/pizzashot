@@ -7,11 +7,13 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import piza from "./piza.png";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch } from "react-redux";
-import { increment, decrement,  deleteProduct} from "../../redux/actions/actions";
-
+import {
+  increment,
+  decrement,
+  deleteProduct,
+} from "../../redux/actions/actions";
 
 const CardInfo = ({ card }) => {
   const dispatch = useDispatch();
@@ -21,8 +23,8 @@ const CardInfo = ({ card }) => {
       <Card sx={{ display: "flex", margin: "10px" }}>
         <CardMedia
           component="img"
-          sx={{ width: 151 }}
-          image={piza}
+          sx={{ width: 151, height: 151 }}
+          image={card.imageUrl}
           alt="Live from space album cover"
         />
         <Box sx={{ display: "flex", flexDirection: "column" }}>
@@ -36,7 +38,7 @@ const CardInfo = ({ card }) => {
               <IconButton
                 aria-label="previous"
                 onClick={() => {
-                  dispatch(decrement(card))
+                  dispatch(decrement(card));
                 }}
               >
                 <RemoveIcon />
@@ -44,7 +46,7 @@ const CardInfo = ({ card }) => {
               <IconButton
                 aria-label="next"
                 onClick={() => {
-                  dispatch(increment(card))
+                  dispatch(increment(card));
                 }}
               >
                 <AddIcon />
@@ -53,9 +55,12 @@ const CardInfo = ({ card }) => {
 
             <Typography component="div" variant="p">
               <div className="delete-btn">
-                Total: LE {card?.price * card?.qty} <DeleteIcon onClick={() => {
-                  dispatch(deleteProduct(card))
-                }} />
+                Total: LE {card?.price * card?.qty}{" "}
+                <DeleteIcon
+                  onClick={() => {
+                    dispatch(deleteProduct(card));
+                  }}
+                />
               </div>
             </Typography>
           </CardContent>

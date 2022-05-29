@@ -351,17 +351,18 @@ body {
 /* dashboard */
 
 .dashboard {
-  height: 82vh;
+  min-height: 82vh;
 }
 
 /* checkInput */
 
-.check {
+/* .check {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-}
+  flex-direction: column;
+  border: 1px solid black;
+} */
 
 .check > .checkInput {
   flex: 1 1 30%;
@@ -387,4 +388,26 @@ a {
 
 form .MuiOutlinedInput-root {
   border: none;
+}
+
+.dashOrder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 1px solid black;
+  margin: 20px;
+  min-width: 310px;
+  border-top: 30px solid #303030;
+}
+
+.dashOrderContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.dashOrderContainer > .dashOrder {
+  flex: 1 1 30%;
 }

@@ -40,18 +40,6 @@ const OrderModal = () => {
   const total = newProducts.reduce((acc, curr) => {
     return acc + curr.qty * curr.price;
   }, 0);
-  console.log(total);
-
-  // const newqty = newProducts?.map((card) => {
-  //   return  card.qty
-  // })
-
-  // const newprice = newProducts?.map((card) => {
-  //   return  card.price
-  // })
-
-  // console.log('newarr', newprice)
-  // console.log('newarr', newqty)
 
   return (
     <div>

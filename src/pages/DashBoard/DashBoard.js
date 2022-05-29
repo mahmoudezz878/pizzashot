@@ -29,15 +29,15 @@ export default function PermanentDrawerLeft() {
           <Toolbar />
           <Divider />
           <List>
-          <Link to="/pendingorders">
-            <ListItem button>
-              <ListItemText primary={"Pending Orders"} />
-            </ListItem>
+            <Link to="/pendingorders">
+              <ListItem button>
+                <ListItemText primary={"Pending Orders"} />
+              </ListItem>
             </Link>
             <Link to="/compleatedorders">
-            <ListItem button>
-              <ListItemText primary={"Compleated Orders"} />
-            </ListItem>
+              <ListItem button>
+                <ListItemText primary={"Compleated Orders"} />
+              </ListItem>
             </Link>
           </List>
         </Drawer>
@@ -46,9 +46,7 @@ export default function PermanentDrawerLeft() {
           sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
         >
           <Toolbar />
-          <div className="check">
-       
-          </div>
+          <div className="check"></div>
         </Box>
       </Box>
     </div>

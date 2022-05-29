@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Toolbar from "@mui/material/Toolbar";
@@ -8,10 +8,23 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import CheckInput from "../../pages/DashBoard/CheckInput/CheckInput";
 import { Link } from "react-router-dom";
+import { getOrders } from "../../api";
 
 const drawerWidth = 240;
 
-const CompleatedOrders = () => {
+const PendingOrders = () => {
+  const [data, setData] = useState([]);
+  const fetchOrders = async () => {
+    const res = await getOrders();
+    setData(res.data);
+  };
+
+  console.log("first", data);
+
+  useEffect(() => {
+    fetchOrders();
+  }, []);
+
   return (
     <div className="dashboard">
       <Box sx={{ display: "flex" }}>
@@ -47,11 +60,20 @@ const CompleatedOrders = () => {
           sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
         >
           <Toolbar />
-          <div className="check">
-            <CheckInput />
-            <CheckInput />
-            <CheckInput />
-        
+          <div className="dashOrderContainer">
+            {data?.map((_data) => {
+              return (
+                <div key={_data.id} className="dashOrder">
+                  {_data.orderItems.map((item) => {
+                    return (
+                      <div key={item.id} className="check">
+                        <CheckInput item={item} qty={item.qty} />
+                      </div>
+                    );
+                  })}
+                </div>
+              );
+            })}
           </div>
         </Box>
       </Box>
@@ -59,4 +81,4 @@ const CompleatedOrders = () => {
   );
 };
 
-export default CompleatedOrders;
+export default PendingOrders;
