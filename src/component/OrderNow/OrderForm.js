@@ -1,12 +1,13 @@
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useSelector } from "react-redux";
-import {addOrders} from "../../api"
+import { addOrders } from "../../api";
 
 const OrderForm = () => {
+  const navigate = useNavigate();
 
   const products = useSelector((state) => state.Counter);
 
@@ -26,9 +27,9 @@ const OrderForm = () => {
         ...values,
         items: newProducts,
       };
-      console.log('res', order)
-     const res = await addOrders(order)
+      const res = await addOrders(order);
       resetForm();
+      navigate("/orderplaced");
     },
     validationSchema: Yup.object({
       name: Yup.string().required("this input is required"),
@@ -93,19 +94,19 @@ const OrderForm = () => {
           value={formik.values.city}
           onChange={formik.handleChange}
         />
-        <Link to="/orderplaced">
-          <Button
-            onClick={formik.handleSubmit}
-            sx={{
-              backgroundColor: "#cd2f17",
-              marginRight: "1rem",
-              marginTop: "2rem",
-            }}
-            variant="contained"
-          >
-            Order Now
-          </Button>
-        </Link>
+
+        <Button
+          onClick={formik.handleSubmit}
+          sx={{
+            backgroundColor: "#cd2f17",
+            marginRight: "1rem",
+            marginTop: "2rem",
+          }}
+          variant="contained"
+        >
+          Order Now
+        </Button>
+
         <Link to="/">
           <Button
             sx={{ backgroundColor: "white", color: "black", marginTop: "2rem" }}
