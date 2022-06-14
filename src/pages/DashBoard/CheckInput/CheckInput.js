@@ -16,7 +16,7 @@ export default function ControlledCheckbox({ item,onChange }) {
         onChange={handleChange}
         inputProps={{ "aria-label": "controlled" }}
       />
-      qty: {item.qty} {item.product.name}
+      qty: {item.qty} {item?.product?.name}
     </div>
   );
 }
